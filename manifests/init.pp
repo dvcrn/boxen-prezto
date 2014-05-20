@@ -17,7 +17,9 @@ class prezto ($repo = 'sorin-ionescu/prezto') {
 
   repository { $zprezto:
     source => $repo,
-    extra  => ['--recursive']
+    extra  => ['--recursive'],
+    provider => git,
+    ensure => 'origin/HEAD'
   }
 
   file { "${home}/.zlogin":
