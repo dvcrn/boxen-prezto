@@ -10,16 +10,14 @@ class prezto ($repo = 'sorin-ionescu/prezto') {
 
   package { 'zsh-lovers': }
 
-  $home = "/Users/${::luser}"
-  $zprezto = "${home}/.zprezto"
+  $zprezto = "/Users/${::boxen_user}/.zprezto"
   $runcoms = "${zprezto}/runcoms"
   $git_url = "https://github.com/${repo}.git"
 
   repository { $zprezto:
+    ensure => 'origin/HEAD',
     source => $repo,
     extra  => ['--recursive'],
-    provider => git,
-    ensure => 'origin/HEAD'
   }
 
   file { "${home}/.zlogin":
